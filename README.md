@@ -10,10 +10,9 @@ NOTE: This software is in a very early state of development. Its requirements, b
 2. Requirements
 
     Not entirely clear as of yet.
-
-    * feh 
-    * mplayer 
-    * youtube-dl
+   * feh 
+   * mplayer 
+   * youtube-dl
 
 3. Installation
 
