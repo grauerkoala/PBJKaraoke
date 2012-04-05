@@ -25,4 +25,4 @@ NOTE: This software is in a very early state of development. Its requirements, b
 
 5. Acknowledgements
 
-    The structure of this README is blatantly ripped off [PocPoc's](https://github.com/derpaderborner/PocPoc PocPoc on GitHub) README.
+    The structure of this README is blatantly ripped off [PocPoc's](https://github.com/derpaderborner/PocPoc "PocPoc on GitHub") README.
