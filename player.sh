@@ -17,13 +17,16 @@ dir=$PWD
 b=textbild.jpg
 
 pid=0
+mpid=0
 play() {
     mplayer $1 &
+    mpid=$!
     sleep 2s;
-    test $pid -eq 0 || kill $pid; pid=0
+    test $pid -eq 0 || kill $pid
 }
 text() {
-    rm $b
+    test $pid -eq 0 || kill $pid
+    test -e $b && rm $b
     width=$(identify -format %w $textbild)
     convert -background '#000' -fill white -gravity center -pointsize 25\
     -size ${width}x150 caption:"$1" $textbild +swap -gravity south\
@@ -44,6 +47,10 @@ main() {
                     ;;
                 text)
                     text "$arg"
+                    ;;
+                stop)
+                    kill $mpid
+                    kill $pid
                     ;;
             esac
         done < $inputfile
