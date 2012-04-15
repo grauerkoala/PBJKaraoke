@@ -14,7 +14,7 @@ var button=document.createElement("button");
 button.setAttribute("class","yt-uix-button yt-uix-button-default");
 button.setAttribute("role","button");
 button.setAttribute("type","button");
-button.setAttribute("style","color:#f00;float:left;margin-right:10px;");
+button.setAttribute("style","color:#f00;float:left;margin-right:10px;width:150px;");
 button.setAttribute("id","ytdlmoep");
 var buttonText=document.createElement("span");
 buttonText.appendChild(document.createTextNode("DOWNLOAD"));
@@ -23,6 +23,7 @@ document.getElementById("watch-headline-user-info").appendChild(button);
 
 document.addEventListener('click', function(event) {
     if (event.target.getAttribute('id') =='ytdlmoep') {
+        document.getElementById("ytdlmoep").firstChild.innerHTML="<p class='loading-spinner'>&nbsp;</p>";
         GM_xmlhttpRequest({
             method: 'GET',
             url: 'http://localhost:4242/' + window.location.href,
@@ -39,8 +40,8 @@ document.addEventListener('click', function(event) {
                     document.getElementById("ytdlmoep").firstChild.innerHTML="error";
                 }
             },
-            onerror: function(error) {
-                document.getElementById("ytdlmoep").firstChild.innerHTML="error";
+            onerror: function(responseDetails) {
+                document.getElementById("ytdlmoep").firstChild.innerHTML="error "+responseDetails.status;
             }
         });
     }
